@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "title": "Ноутбук Lenovo IdeaPad",
+    "price": 650,
+    "category": "electronics"
+  },
+  {
+    "id": 2,
+    "title": "Смартфон Samsung Galaxy",
+    "price": 450,
+    "category": "electronics"
+  },
+  {
+    "id": 3,
+    "title": "Золота підвіска 585",
+    "price": 200,
+    "category": "jewelery"
+  },
+  {
+    "id": 4,
+    "title": "Куртка чоловіча весняна",
+    "price": 120,
+    "category": "men's clothing"
+  },
+  {
+    "id": 5,
+    "title": "Сукня літня жіноча",
+    "price": 85,
+    "category": "women's clothing"
+  }
+]

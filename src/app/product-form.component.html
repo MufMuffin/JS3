@@ -1,0 +1,48 @@
+<div class="form-card">
+  <h2 class="form-card__title">Додати новий товар</h2>
+  
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+    <div class="form__group">
+      <label class="form__label">Назва товару</label>
+      <input 
+        formControlName="name" 
+        placeholder="Наприклад: Wireless Headphones" 
+        class="form__input" 
+      />
+      <div *ngIf="form.get('name')?.invalid && form.get('name')?.touched" class="form__error">
+        Назва обов'язкова
+      </div>
+    </div>
+
+    <div class="form__group">
+      <label class="form__label">Ціна ($)</label>
+      <input 
+        formControlName="price" 
+        type="number" 
+        placeholder="0.00" 
+        class="form__input" 
+      />
+      <div *ngIf="form.get('price')?.invalid && form.get('price')?.touched" class="form__error">
+        Вкажіть суму більше 0
+      </div>
+    </div>
+
+    <div class="form__group">
+      <label class="form__label">Категорія</label>
+      <select formControlName="category" class="form__select">
+        <option value="">Оберіть категорію</option>
+        <option value="electronics">electronics</option>
+        <option value="jewelery">jewelery</option>
+        <option value="men's clothing">men's clothing</option>
+        <option value="women's clothing">women's clothing</option>
+      </select>
+      <div *ngIf="form.get('category')?.invalid && form.get('category')?.touched" class="form__error">
+        Оберіть категорію
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid" class="form__submit-btn">
+      Зберегти товар
+    </button>
+  </form>
+</div>

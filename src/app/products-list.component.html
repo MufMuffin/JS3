@@ -1,0 +1,37 @@
+<div class="catalog-header">
+  <h2 class="catalog-header__title">Каталог товарів</h2>
+  
+  <div class="filter-group">
+    <label for="category" class="filter-group__label">Категорія:</label>
+    <select 
+      id="category" 
+      [ngModel]="selectedCategory()" 
+      (ngModelChange)="selectedCategory.set($event)" 
+      class="filter-group__select">
+      <option value="">Усі категорії</option>
+      <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+    </select>
+  </div>
+</div>
+
+<!-- Сітка товарів -->
+<div class="products-grid">
+  <div 
+    *ngFor="let p of filteredProducts(); trackBy: trackById" 
+    class="product-card">
+    <div>
+      <span class="product-card__badge">
+        {{ p.category }}
+      </span>
+      <h3 class="product-card__title">
+        {{ p.title || p.name }}
+      </h3>
+    </div>
+    <div class="product-card__footer">
+      <span class="product-card__price">${{ p.price }}</span>
+      <a [routerLink]="['/products', p.id]" class="product-card__btn">
+        Деталі
+      </a>
+    </div>
+  </div>
+</div>

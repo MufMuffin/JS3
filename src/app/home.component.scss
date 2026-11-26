@@ -1,0 +1,36 @@
+.welcome-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+
+  &__title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #0f172a;
+  }
+
+  &__description {
+    color: #64748b;
+    font-size: 16px;
+    max-width: 600px;
+    margin: 0 auto 24px;
+  }
+
+  &__btn {
+    display: inline-block;
+    background: #2563eb;
+    color: #ffffff;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background: #1d4ed8;
+    }
+  }
+}

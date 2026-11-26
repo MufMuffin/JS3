@@ -1,0 +1,71 @@
+<div class="details-container">
+  <a routerLink="/products" class="back-link">
+    ← Назад до каталогу
+  </a>
+
+  <div *ngIf="loading()" class="state-message">Завантаження...</div>
+  <div *ngIf="error()" class="error-message">{{ error() }}</div>
+  
+  <!-- Режим перегляду -->
+  <div *ngIf="product() && !isEditing()" class="card">
+    <span class="badge">
+      {{ product()?.category }}
+    </span>
+    
+    <h2 class="card__title">
+      {{ product()?.title || product()?.name }}
+    </h2>
+    
+    <hr class="card__divider" />
+
+    <div class="card__price-row">
+      <span class="card__price-label">Ціна товару:</span>
+      <span class="card__price-value">${{ product()?.price }}</span>
+    </div>
+
+    <div class="card__actions">
+      <button (click)="startEdit()" class="btn btn--primary">
+        Редагувати
+      </button>
+      <button (click)="onDelete()" class="btn btn--danger">
+        Видалити
+      </button>
+    </div>
+  </div>
+
+  <!-- Режим редагування -->
+  <div *ngIf="product() && isEditing()" class="card">
+    <h2 class="card__form-title">Редагувати товар</h2>
+
+    <form [formGroup]="editForm" (ngSubmit)="onSaveEdit()" class="form">
+      <div class="form__group">
+        <label class="form__label">Назва товару</label>
+        <input formControlName="title" class="form__input" />
+      </div>
+
+      <div class="form__group">
+        <label class="form__label">Ціна ($)</label>
+        <input formControlName="price" type="number" class="form__input" />
+      </div>
+
+      <div class="form__group">
+        <label class="form__label">Категорія</label>
+        <select formControlName="category" class="form__select">
+          <option value="electronics">electronics</option>
+          <option value="jewelery">jewelery</option>
+          <option value="men's clothing">men's clothing</option>
+          <option value="women's clothing">women's clothing</option>
+        </select>
+      </div>
+
+      <div class="form__actions">
+        <button type="submit" [disabled]="editForm.invalid" class="btn btn--success">
+          Зберегти
+        </button>
+        <button type="button" (click)="isEditing.set(false)" class="btn btn--secondary">
+          Скасувати
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
